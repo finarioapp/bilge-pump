@@ -1,6 +1,6 @@
-gem 'cucumber', '1.0.2' #https://github.com/cucumber/gherkin/issues/105
-gem 'rake'
-gem 'rack', '~> 1.4.7'
-gem 'rails', '3.2.22'
-gem 'rspec-rails', '~> 3.0.0'
-gem 'mongoid', '3.1.7'
+gem 'cucumber' #https://github.com/cucumber/gherkin/issues/105
+gem 'rake', '10.5.0'
+gem 'rack', '1.6.13'
+gem 'rails', '4.2.11.3'
+gem 'rspec-rails', '3.0.2'
+gem 'mongoid', '5.4.1'
