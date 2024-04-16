@@ -37,7 +37,7 @@ Before do
         f.name "foo"
       end
     else
-      FactoryGirl.define do
+      FactoryBot.define do
         factory :foo do
           name "Foo"
         end
