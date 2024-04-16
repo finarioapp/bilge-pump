@@ -19,7 +19,7 @@ module BilgePump
 
         options.testing :new do
           it "new works" do
-            get :new, base_parameters
+            get :new, params: base_parameters
             bilge_assert_new_response item_assign_name
           end
         end
@@ -28,7 +28,7 @@ module BilgePump
           it "create works" do
             original_items = created_model_scope.all.to_a
 
-            post :create, base_parameters.merge(
+            post :create, params: base_parameters.merge(
               model_param_name => parameters_for_create
             )
 
@@ -45,7 +45,7 @@ module BilgePump
         options.testing :edit do
           it "edit works" do
             m = create_model(:edit)
-            get :edit, base_parameters.merge(id: m.to_param)
+            get :edit, params: base_parameters.merge(id: m.to_param)
             bilge_assert_edit_response m, item_assign_name
           end
         end
@@ -53,7 +53,7 @@ module BilgePump
         options.testing :update do
           it "update works" do
             m = create_model(:create)
-            post :update, base_parameters.merge(
+            post :update, params: base_parameters.merge(
               id: m.to_param, model_param_name => parameters_for_update
             )
 
@@ -67,7 +67,7 @@ module BilgePump
           it "show works" do
             m = create_model(:show)
 
-            get :show, base_parameters.merge(id: m.to_param)
+            get :show, params: base_parameters.merge(id: m.to_param)
 
             bilge_assert_show_response m, item_assign_name
           end
@@ -77,7 +77,7 @@ module BilgePump
           it "destroy works" do
             m = create_model(:destroy)
 
-            delete :destroy, base_parameters.merge(id: m.to_param)
+            delete :destroy, params: base_parameters.merge(id: m.to_param)
 
             bilge_assert_destroy_response options, m
           end
