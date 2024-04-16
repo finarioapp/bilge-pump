@@ -10,8 +10,8 @@ Feature: RSpec Support
     When I run the specs
     Then They should all pass
 
-  Scenario: Specs pass on FactoryGirl 4.1 (ActiveRecord)
-    Given I am using gem factory_girl version 4.1
+  Scenario: Specs pass on FactoryBot (ActiveRecord)
+    Given I am using gem factory_bot
     Given I am using ActiveRecord
     And I have included BilgePump::Controller in a controller
     And I have included BilgePump::Specs in an describe block
@@ -25,16 +25,16 @@ Feature: RSpec Support
     When I run the specs
     Then They should all pass
 
-  Scenario: Specs pass on simple controller (MongoMapper)
-    Given I am using MongoMapper
+  Scenario: Specs pass on simple controller (Mongoid)
+    Given I am using Mongoid
     And I have included BilgePump::Controller in a controller
     And I have included BilgePump::Specs in an describe block
     When I run the specs
     Then They should all pass
 
-  Scenario: Specs pass on FactoryGirl 4.1 (MongoMapper)
-    Given I am using gem factory_girl version 4.1
-    Given I am using MongoMapper
+  Scenario: Specs pass on FactoryBot (Mongoid)
+    Given I am using gem factory_bot
+    Given I am using Mongoid
     And I have included BilgePump::Controller in a controller
     And I have included BilgePump::Specs in an describe block
     When I run the specs
@@ -49,8 +49,8 @@ Feature: RSpec Support
     When I run the specs
     Then They should all pass
 
-  Scenario: Specs pass on nested controller (MongoMapper)
-    Given I am using MongoMapper
+  Scenario: Specs pass on nested controller (Mongoid)
+    Given I am using Mongoid
     And It has a belongs_to relationship
     And I have included BilgePump::Controller in a controller
     And I have declared model scope

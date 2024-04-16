@@ -4,7 +4,7 @@ require 'tempfile'
 Before do
   @gemfile_path = File.expand_path(File.join(File.dirname(__FILE__),
                                              '..', '..',
-                                             'Gemfile-factory_girl-1.3'))
+                                             'Gemfile-factory_bot'))
   @source_code = <<-end_code
     $LOAD_PATH << "#{File.expand_path(File.join(File.dirname(__FILE__), %w(.. .. lib)))}"
 
@@ -14,7 +14,7 @@ Before do
     require 'action_mailer' # to satisfy RSpec::Rails::MailerExampleGroup
     require 'bilge-pump'
     require 'rspec/rails'
-    require 'factory_girl'
+    require 'factory_bot'
 
     module BilgePumpTestApp
       class Application < Rails::Application
@@ -80,22 +80,20 @@ Given /^I am using ActiveRecord$/ do
   end_code
 end
 
-Given /^I am using MongoMapper$/ do
+Given /^I am using Mongoid$/ do
   @source_code << <<-end_code
-    require 'mongo_mapper'
-    MongoMapper.database = 'bilge-pump-feature-db'
-    MongoMapper.database.connection.drop_database 'bilge-pump-feature-db'
-
-    MongoMapper::Document.plugin BilgePump::MongoMapper::Document
+    require 'mongoid'
+    Mongoid.database = 'bilge-pump-feature-db'
+    Mongoid.current_session.collections.map(&:drop)
 
     class Bar
-      include MongoMapper::Document
+      include Mongoid::Document
 
       key :name, String
     end
 
     class Foo
-      include MongoMapper::Document
+      include Mongoid::Document
 
       key :name, String
       key :bar_id, ObjectId
