@@ -4,7 +4,7 @@ module BilgePump
       if defined? ::Factory
         ::Factory
       else
-        ::FactoryGirl
+        ::FactoryBot
       end
     end
 
