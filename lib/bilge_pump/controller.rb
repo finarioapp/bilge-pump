@@ -20,7 +20,7 @@ module BilgePump
     end
 
     def create
-      respond_with_assign item_assign_name, model_scope.create(params[model_param_name])
+      respond_with_assign item_assign_name, model_scope.create_with_protected_attributes(params[model_param_name])
     end
 
     def update
