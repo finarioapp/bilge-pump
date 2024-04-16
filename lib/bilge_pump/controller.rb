@@ -25,7 +25,7 @@ module BilgePump
 
     def update
       model = find_model model_scope, params[:id]
-      model.update_attributes params[model_param_name]
+      model.update_protected_attributes params[model_param_name]
       respond_with_assign item_assign_name, model
     end
 
