@@ -20,12 +20,12 @@ module BilgePump
     end
 
     def create
-      respond_with_assign item_assign_name, model_scope.create(params[model_param_name].to_unsafe_h)
+      respond_with_assign item_assign_name, model_scope.create(params[model_param_name]&.to_unsafe_h || {})
     end
 
     def update
       model = find_model model_scope, params[:id]
-      model.update params[model_param_name].to_unsafe_h
+      model.update params[model_param_name].to_unsafe_h if params[model_param_name]
       respond_with_assign item_assign_name, model
     end
 
