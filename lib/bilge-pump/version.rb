@@ -1,5 +1,5 @@
 module Bilge
   module Pump
-    VERSION = "5.2.8.1.6"
+    VERSION = "5.2.8.1.7"
   end
 end
