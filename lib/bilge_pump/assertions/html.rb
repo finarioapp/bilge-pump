@@ -2,13 +2,13 @@ module BilgePump
   module Assertions
     module Html
       def bilge_assert_index_response(collection_assign_name, items)
-        expect(response).to be_success
+        expect(response).to be_successful
         expect(assigns(collection_assign_name)).to include items.first
         expect(collection_assign_name).to include items.last
       end
 
       def bilge_assert_new_response(item_assign_name)
-        expect(response).to be_success
+        expect(response).to be_successful
         expect(assigns(item_assign_name)).to be_new_record
       end
 
@@ -18,7 +18,7 @@ module BilgePump
       end
 
       def bilge_assert_edit_response(model, item_assign_name)
-        expect(response).to be_success
+        expect(response).to be_successful
         expect(assigns(item_assign_name)).to eq(model)
       end
 
@@ -28,7 +28,7 @@ module BilgePump
       end
 
       def bilge_assert_show_response(model, item_assign_name)
-        expect(response).to be_success
+        expect(response).to be_successful
         expect(assigns(item_assign_name)).to eq(model)
       end
 

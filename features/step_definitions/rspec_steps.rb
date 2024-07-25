@@ -197,6 +197,6 @@ When /^I run the specs$/ do
 end
 
 Then /^They should all pass$/ do
-  @result.should be_success, @output
+  @result.should be_successful, @output
 end
 
