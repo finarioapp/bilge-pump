@@ -20,12 +20,12 @@ module BilgePump
     end
 
     def create
-      respond_with_assign item_assign_name, model_scope.create(params[model_param_name]&.to_unsafe_h || {})
+      respond_with_assign item_assign_name, model_scope.create(permitted_params)
     end
 
     def update
       model = find_model model_scope, params[:id]
-      model.update params[model_param_name].to_unsafe_h if params[model_param_name]
+      model.update(permitted_params)
       respond_with_assign item_assign_name, model
     end
 
@@ -44,6 +44,13 @@ module BilgePump
     end
 
     protected
+
+    def permitted_params
+      method = self.class.strong_params_method
+      raise "No strong_params_method defined for #{self.class.name}" unless method
+      
+      send(method)
+    end
 
     def model_class
       self.class.model_class
@@ -106,6 +113,11 @@ module BilgePump
       def model_class(value_to_set = nil)
         @model_class = value_to_set if value_to_set
         @model_class || name.sub(/Controller\Z/, '').singularize.constantize
+      end
+
+      def strong_params_method(method_name = nil)
+        @strong_params_method = method_name if method_name
+        @strong_params_method
       end
     end
   end
