@@ -10,7 +10,7 @@ module BilgePump
       end
 
       def bilge_assert_index_response(collection_assign_name, items)
-        expect(response).to be_success
+        expect(response).to be_successful
 
         models = bilge_json_response
 
@@ -19,7 +19,7 @@ module BilgePump
       end
 
       def bilge_assert_new_response(item_assign_name)
-        expect(response).to be_success
+        expect(response).to be_successful
       end
 
       CREATED = '201'
@@ -30,7 +30,7 @@ module BilgePump
       end
 
       def bilge_assert_edit_response(model, item_assign_name)
-        expect(response).to be_success
+        expect(response).to be_successful
       end
 
       def bilge_assert_update_response(options, expected_attrs, model)
@@ -40,12 +40,12 @@ module BilgePump
       end
 
       def bilge_assert_show_response(model, item_assign_name)
-        expect(response).to be_success
+        expect(response).to be_successful
         expect(bilge_json_response).to eq(bilge_json(model.to_json))
       end
 
       def bilge_assert_destroy_response(options, model)
-        expect(response).to be_success
+        expect(response).to be_successful
         expect(model.class.find_by_id(model.id)).to be_nil
       end
     end
